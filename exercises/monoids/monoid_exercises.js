@@ -18,7 +18,7 @@ var getResult = Monoids.getResult;
 // ==========
 // write a sum function using getResult() mconcat() and Sum()
 
-var ex1 = undefined
+var ex1 = compose(getResult, mconcat, map(Sum));
 
 
 
@@ -27,7 +27,7 @@ var ex1 = undefined
 // ==========
 // Similar to the above, get the Product of the list.
 
-var ex2 = undefined
+var ex2 = compose(getResult, mconcat, map(Product));
 
 
 
@@ -35,7 +35,7 @@ var ex2 = undefined
 // Exercise 3
 // ==========
 // Similar to the above, get the Max of the list.
-var ex3 = undefined
+var ex3 = compose(getResult, mconcat, map(Max));
 
 
 
@@ -48,7 +48,7 @@ var lastName = _.get('last');
 var space = function(){ return ' ' }
 var user = { first: "Bill", middle: "Jefferson", last: "Clinton" };
 
-var ex4 = undefined
+var ex4 = mconcat([firstName, space, middleName, space, lastName]);
 
 
 
@@ -72,9 +72,8 @@ _Tuple.prototype.empty = function () {
   return Tuple(this.x.empty(), this.y.empty());
 };
 
-// TODO: DEFINE ME
 _Tuple.prototype.concat = function (t2) {
-  return undefined // <-- write me!
+  return Tuple(this.x.concat(t2.x), this.y.concat(t2.y));
 };
 
 var bonus = mconcat([Tuple("abc", [1, 2, 3]), Tuple("def", [4, 5, 6])]);
